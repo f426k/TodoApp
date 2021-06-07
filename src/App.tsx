@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import styles from './App.module.css';
 import { db } from "./firebase";
-import TaskItem from './component/TaskItem';
 import { Heading } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/react"
 import AddTodo from './component/AddTodo';
+import TaskItem from './component/TaskItem';
 
 
 
@@ -19,7 +18,6 @@ const App: React.FC = () => {
     return () => unSub();
   }, [])
   return (
-    <div className={styles.app__root}>
       <VStack>
       <Heading mt="8" mb="3">ToDo App by React/firebase</Heading>
       <br />
@@ -29,7 +27,6 @@ const App: React.FC = () => {
         <TaskItem key={task.id} id={task.id} title={task.title}/>
         ))}
     </VStack>
-    </div>
   );
 };
 
