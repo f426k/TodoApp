@@ -15,7 +15,7 @@ const TaskItem: React.FC<PROPS> = (props) => {
 
   const editTask = () => {
     db.collection("tasks").doc(props.id).set({title: title}, {merge: true});
-    setTitle("")
+    setTitle("");
   };
   const deleteTask = () => {
     db.collection("tasks").doc(props.id).delete();
@@ -26,6 +26,7 @@ const TaskItem: React.FC<PROPS> = (props) => {
       divider={<StackDivider />}
       borderWidth="2px"
       p="4"
+      borderColor="red.100"
       borderRadius="lg"
       mb="2"
       width="100%"
@@ -33,16 +34,32 @@ const TaskItem: React.FC<PROPS> = (props) => {
       alignItems="stretch"
     >
       <HStack>
-        <Text>{props.title}</Text>
+        <Text bgColor="gray.600" bgClip="text" fontWeight="bold">{props.title}</Text>
         <Spacer />
         <Input 
           onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTitle(e.target.value)} 
           variant="flushed" 
           placeholder="Edit task"
           width="40%"
+          focusBorderColor="red.100"
           />
-        <IconButton aria-label="edit" icon={ <FaCheck /> } isRound={true} onClick={editTask}/> 
-        <IconButton aria-label="delete" icon={ <FaTrash /> } isRound={true} onClick={deleteTask} ml="4"/> 
+        <IconButton 
+          aria-label="edit" 
+          icon={ <FaCheck /> } 
+          isRound={true} 
+          onClick={editTask} 
+          bgColor="transparent"
+          _hover={{ bg: "gray.100", color:"red.400" }}
+        /> 
+        <IconButton 
+          aria-label="delete" 
+          icon={ <FaTrash /> } 
+          isRound={true} 
+          onClick={deleteTask} 
+          ml="4" 
+          bgColor="transparent"
+          _hover={{ bg: "gray.100", color:"red.400" }}
+        /> 
       </HStack>
     </VStack>
     

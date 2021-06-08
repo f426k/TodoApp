@@ -19,7 +19,7 @@ const App: React.FC = () => {
   }, [])
   return (
       <VStack>
-      <Heading mt="8" mb="3">ToDo App by React/firebase</Heading>
+      <Heading mt="8" mb="3" bgColor="gray.600" bgClip="text">ToDo App</Heading>
       <br />
       <AddTodo />
       <br />
