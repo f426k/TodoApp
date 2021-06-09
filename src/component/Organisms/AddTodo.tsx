@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { db } from "../../../firebase";
+import { db } from "../../firebase";
 import {HStack} from "@chakra-ui/react";
-import RedButton from '../../Atoms/RedButton';
-import TextInput from '../../Atoms/TextInput';
+import RedButton from '../Atoms/RedButton';
+import TextInput from '../Atoms/TextInput';
 
 const AddTodo: React.FC = () => {
   const [input, setInput] = useState("");

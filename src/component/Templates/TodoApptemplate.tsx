@@ -2,8 +2,8 @@ import { VStack } from '@chakra-ui/layout'
 import React, {useState, useEffect} from 'react'
 import { db } from "../../firebase";
 import HeadText from '../Atoms/HeadText'
-import AddTodo from '../Molecules/Organisms/AddTodo'
-import TaskItem from '../Molecules/Organisms/TaskItem'
+import AddTodo from '../Organisms/AddTodo'
+import TaskItem from '../Organisms/TaskItem'
 
 const TodoApptemplate = () => {
   const [tasks, setTasks] = useState([{id: "", title: ""}]);

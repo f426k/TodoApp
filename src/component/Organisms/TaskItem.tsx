@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { db } from "../../../firebase";
+import { db } from "../../firebase";
 import { VStack, HStack, Text, StackDivider, Spacer } from "@chakra-ui/react";
-import DeleteButton from '../../Atoms/DeleteButton';
-import EditButton from '../../Atoms/EditButton';
-import TextInput from '../../Atoms/TextInput';
-import Formlabel from '../../Atoms/Formlabel';
+import DeleteButton from '../Atoms/DeleteButton';
+import EditButton from '../Atoms/EditButton';
+import TextInput from '../Atoms/TextInput';
+import Formlabel from '../Atoms/Formlabel';
 
 
 interface PROPS {
