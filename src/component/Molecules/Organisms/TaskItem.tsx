@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { db } from "../firebase";
-import { VStack, IconButton, HStack, Text, StackDivider, Spacer, Input, FormLabel } from "@chakra-ui/react";
-import { FaTrash, FaCheck } from "react-icons/fa"
+import { db } from "../../../firebase";
+import { VStack, HStack, Text, StackDivider, Spacer } from "@chakra-ui/react";
+import DeleteButton from '../../Atoms/DeleteButton';
+import EditButton from '../../Atoms/EditButton';
+import TextInput from '../../Atoms/TextInput';
+import Formlabel from '../../Atoms/Formlabel';
 
 
 interface PROPS {
@@ -33,44 +36,23 @@ const TaskItem: React.FC<PROPS> = (props) => {
       alignItems="stretch"
     >
       <HStack>
-        <Text bgColor="gray.600" bgClip="text" fontWeight="bold">{props.title}</Text>
+        <Text bgColor="gray.600" bgClip="text" fontWeight="bold">
+          {props.title}
+          </Text>
         <Spacer />
         <VStack>
-          <FormLabel
-            color="gray.600"
-            fontSize="sm"
-            margin="0px"
-            alignSelf="flex-start"
-          >
-            Edit task
-          </FormLabel>
-          <Input 
+          <Formlabel name="Edit task" />
+          <TextInput
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTitle(e.target.value)} 
             variant="flushed" 
             placeholder="Edit task"
             width="100%"
             focusBorderColor="red.100"
             value={title}
-            marginTop="0px"
             />
-          </VStack>
-        <IconButton 
-          aria-label="edit" 
-          icon={ <FaCheck /> } 
-          isRound={true} 
-          onClick={editTask} 
-          bgColor="transparent"
-          _hover={{ bg: "gray.100", color:"red.400" }}
-        /> 
-        <IconButton 
-          aria-label="delete" 
-          icon={ <FaTrash /> } 
-          isRound={true} 
-          onClick={deleteTask} 
-          ml="4" 
-          bgColor="transparent"
-          _hover={{ bg: "gray.100", color:"red.400" }}
-        /> 
+        </VStack>
+        <EditButton onClick={editTask} disabled={!title}/>
+        <DeleteButton onClick={deleteTask}/>
       </HStack>
     </VStack>
     
