@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import firebase from "firebase/app";
 import { db } from "../firebase";
-import { VStack, IconButton, HStack, Text, StackDivider, Spacer, Input } from "@chakra-ui/react";
+import { VStack, IconButton, HStack, Text, StackDivider, Spacer, Input, FormLabel } from "@chakra-ui/react";
 import { FaTrash, FaCheck } from "react-icons/fa"
 
 
@@ -36,13 +35,25 @@ const TaskItem: React.FC<PROPS> = (props) => {
       <HStack>
         <Text bgColor="gray.600" bgClip="text" fontWeight="bold">{props.title}</Text>
         <Spacer />
-        <Input 
-          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTitle(e.target.value)} 
-          variant="flushed" 
-          placeholder="Edit task"
-          width="40%"
-          focusBorderColor="red.100"
-          />
+        <VStack>
+          <FormLabel
+            color="gray.600"
+            fontSize="sm"
+            margin="0px"
+            alignSelf="flex-start"
+          >
+            Edit task
+          </FormLabel>
+          <Input 
+            onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTitle(e.target.value)} 
+            variant="flushed" 
+            placeholder="Edit task"
+            width="100%"
+            focusBorderColor="red.100"
+            value={title}
+            marginTop="0px"
+            />
+          </VStack>
         <IconButton 
           aria-label="edit" 
           icon={ <FaCheck /> } 

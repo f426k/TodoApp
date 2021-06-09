@@ -4,9 +4,10 @@ import {Button, HStack, Input} from "@chakra-ui/react";
 
 const AddTodo = () => {
   const [input, setInput] = useState("");
-  const newTask = (e: React.MouseEvent<HTMLButtonElement>)=>{
+  const newTask = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     db.collection("tasks").add({title: input});
-    setInput("");
+    setInput("")
   };
   return (
       <HStack>
@@ -15,10 +16,11 @@ const AddTodo = () => {
           placeholder="New task?"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
           focusBorderColor="red.200"
+          value={input}
         />
         <Button
           px="8" 
-          type="submit" 
+          type="button" 
           onClick={newTask} 
           bgColor="red.400" 
           color="white"
